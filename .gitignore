@@ -45,3 +45,4 @@ temp/
 uploads/
 
 backend/.env
+front/.env
