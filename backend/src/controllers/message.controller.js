@@ -37,6 +37,7 @@ export const sendMessage = async (req, res) => {
   //Can receive text or image
   //send message to a user
   try {
+    //get the message data
     const { text, image } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id; //sender id is the logged in user
@@ -53,8 +54,7 @@ export const sendMessage = async (req, res) => {
       image: imageUrl,
     });
     await newMessage.save();
-
-    //todo: real time functionality
+    //todo: real time functionality => socket.io
     res.status(200).json(newMessage);
   } catch (error) {
     console.log("Error sending message", error.message);
